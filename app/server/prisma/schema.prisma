@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Chatroom {
+  id        Int       @id @default(autoincrement())
+  name      String
+  userCount Int       @default(0)
+  createdAt DateTime  @default(now())
+  messages  Message[]
+  users     RoomUser[]
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  chatroomId Int
+  userId     Int
+  createdAt  DateTime @default(now())
+  chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  reactions  Reaction[]
+  @@index([chatroomId, createdAt])
+}
+
+enum ReactionType {
+  LIKE
+  DISLIKE
+}
+
+model Reaction {
+  id        Int      @id @default(autoincrement())
+  type      ReactionType
+  userId    Int
+  messageId Int
+  createdAt DateTime @default(now())
+  message   Message  @relation(fields: [messageId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  @@index([messageId, type])
+  @@unique([messageId, userId])
+}
+
+model RoomUser {
+  id         Int      @id @default(autoincrement())
+  chatroomId Int
+  userId     Int
+  createdAt  DateTime @default(now())
+  chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@unique([chatroomId, userId])
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  createdAt DateTime  @default(now())
+  messages  Message[]
+  reactions Reaction[]
+  rooms     RoomUser[]
+}
