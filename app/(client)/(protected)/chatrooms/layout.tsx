@@ -13,6 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
   useEffect(() => {
     initializeUser();
   }, [initializeUser]);
+  
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">{children}</main>
