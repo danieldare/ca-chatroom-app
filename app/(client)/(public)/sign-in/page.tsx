@@ -24,7 +24,6 @@ export default function Page() {
     setError("");
     try {
       const user = await mutateAsync({ username });
-      console.log("user", user)
       cookies.set('user', JSON.stringify(user), { expires: 1 / 24 }); // 1 hour
       setUser(user!);
       router.push('/chatrooms');

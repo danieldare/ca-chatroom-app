@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import cookies from "js-cookie";
-import { useUserStore } from "@/app/store/useUserStore";
+import { useUserStore } from "../store/useUserStore";
 
 export const Navbar = () => {
   const router = useRouter();
