@@ -1,7 +1,9 @@
 import { z } from "zod";
-import { serialize } from "cookie";
+
 import {  publicProcedure, router } from "../procedures";
 import { prisma } from "../../lib/prisma";
+import { cookies } from 'next/headers';
+
 
 export const userInputSchema = z.object({
   username: z.string().min(1, { message: "username is required" }),
@@ -10,7 +12,7 @@ export const userInputSchema = z.object({
 export type userInput = z.infer<typeof userInputSchema>;
 
 export const userRouter = router({
-  signIn: publicProcedure.input(userInputSchema).mutation(async ({ input, ctx }) => {
+  signIn: publicProcedure.input(userInputSchema).mutation(async ({ input }) => {
     try {
       const user = await prisma.user.upsert({
         where: { username: input.username },
@@ -18,16 +20,7 @@ export const userRouter = router({
         create: { username: input.username },
       });
 
-      const cookie = serialize("user", JSON.stringify({ id: user.id, username: user.username }), {
-        path: "/",
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: 5 * 60 * 60, // 5 hrs
-      });
-
-      if (ctx.res) {
-        ctx.res.setHeader("Set-Cookie", cookie);
-      }
+      (await cookies()).set("user", JSON.stringify({ id: user.id, username: user.username }) )
 
       return user;
     } catch (error) {

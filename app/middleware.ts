@@ -3,10 +3,9 @@ import type { NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 
 
-export function middleware(req: NextRequest) {
-  const session = cookies().get(name);
-  return session ? JSON.parse(session?.value ?? '{}') : undefined;
-  const user = session.user ? JSON.parse(session.user) : null;
+export async  function middleware(req: NextRequest) {
+  const session = (await cookies()).get("user");
+  const user =  session ? JSON.parse(session?.value ?? '{}') : undefined;
 
   if(req.nextUrl.pathname !== "/sign-in" && !user){
     return NextResponse.redirect(new URL('/sign-in', req.url));

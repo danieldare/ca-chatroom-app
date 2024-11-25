@@ -26,7 +26,7 @@ export const chatRouter = router({
       const user = ctx.user
       await createRoomUser(input.chatroomId, user.id);
       await updateUserCount(input.chatroomId, true);
-      emitEvent(EVENTS.USER_JOINED, { chatroomId: input.chatroomId, userId: input.userId });
+      emitEvent(EVENTS.USER_JOINED, { chatroomId: input.chatroomId, userId: user.id });
       emitEvent(EVENTS.UPDATE, input.chatroomId);
       return { success: true };
     }),
