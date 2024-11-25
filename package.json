@@ -11,10 +11,9 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx ./app/server/prisma/seed.ts",
-    "websocket:start": "tsx ./app/lib/ws-server.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init",
-    "start:servers": "concurrently \"npm run websocket:start\" \"npm run dev\"",
+    "start:servers": "concurrently \"npm run wss:start\" \"npm run dev\"",
     "wss:start": "tsx watch ./app/server/ws/server.ts"
   },
   "dependencies": {
