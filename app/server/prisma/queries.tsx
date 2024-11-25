@@ -64,3 +64,18 @@ export const findRoomDetails = (chatroomId: number) => {
     include: { users: true },
   });
 };
+
+export const findOnlineUsers = (chatroomId: number, excludeUserId: number) => {
+  return prisma.roomUser.findMany({
+    where: { chatroomId, userId: { not: excludeUserId } },
+    select: {
+      user: {
+        select: {
+          id: true,
+          username: true,
+          createdAt: true,
+        },
+      },
+    },
+  }).then(roomUsers => roomUsers.map(roomUser => roomUser.user));
+};

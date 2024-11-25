@@ -1,4 +1,4 @@
-import { router } from "./init";
+import { router } from "./procedures";
 import { chatRouter } from "./router/chat-router";
 import { userRouter } from "./router/user-router";
 
