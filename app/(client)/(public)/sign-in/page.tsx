@@ -40,7 +40,7 @@ export default function Page() {
     <div className="flex flex-col justify-center items-center h-screen">
       <div className="pattern-cross pattern-blue-500 pattern-bg-white 
   pattern-size-6 pattern-opacity-40"></div>
-      <h1 className="text-[30px] text-[#239723] font-bold my-4">Mingle Rooms</h1>
+      <h1 className="text-[30px] text-[#239723] font-bold my-4">CA ChatRooms</h1>
       <div className="bg-[#42414134] p-6 rounded-lg drop-shadow-lg w-full max-w-[450px]">
         <div className="mb-10">
           <h3 className="text-lg font-bold text-[#239723]">Sign In</h3>

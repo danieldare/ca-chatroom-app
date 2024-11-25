@@ -12,21 +12,6 @@ export default function ChatroomsPage() {
   const joinMutation = trpc.chat.join.useMutation();
   // const onNewMessage = trpc.chat.onNewMessage.useSubscription();
 
-  // useEffect(() => {
-  //   const ws = new WebSocket("ws://localhost:8080");
-
-  //   ws.onmessage = (event) => {
-  //     const message = JSON.parse(event.data);
-  //     if (message.type === "update") {
-  //       refetch();
-  //     }
-  //   };
-
-  //   return () => {
-  //     ws.close();
-  //   };
-  // }, [refetch]);
-
   const joinRoom = async (roomId: number) => {
     if (user) {
       await joinMutation.mutateAsync({ chatroomId: roomId, userId: user.id });

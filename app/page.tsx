@@ -8,7 +8,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-screen bg-gray-900 text-white p-4">
-      <h3 className="text-xl font-bold mb-5">Welcome to Mingle chatroom app</h3>
+      <h3 className="text-xl font-bold mb-5">Welcome to CA chatroom app</h3>
       {user ? (
         <button onClick={() => router.push("/chatrooms")} className="bg-[#239723] text-white px-4 py-2 rounded">Continue to chatroom</button>
       ) : (
