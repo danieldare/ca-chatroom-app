@@ -77,15 +77,18 @@ Prisma ORM: Database interactions are managed using Prisma.
 
 ## Technologies Used
 **Next.js**: A React framework for building server-side rendered and statically generated web applications.
-**tRPC**: End-to-end typesafe APIs made easy.
-**Prisma**: Next-generation ORM for Node.js and TypeScript.
-**WebSocket**: A protocol for full-duplex communication channels over a single TCP connection.
-**Zustand**: A small, fast, and scalable bearbones state-management solution using simplified flux principles.
-**Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-**TypeScript**: A strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
 
-## Environment Variables
-Ensure you have the following environment variables set up in your .env file:
+**tRPC**: End-to-end typesafe APIs made easy.
+
+**Prisma**: Next-generation ORM for Node.js and TypeScript.
+
+**WebSocket**: A protocol for full-duplex communication channels over a single TCP connection.
+
+**Zustand**: A small, fast, and scalable bearbones state-management solution using simplified flux principles.
+
+**Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+
+**TypeScript**: A strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
 
 ## Environment Variables
 Ensure you have the following environment variables set up in your .env file:
