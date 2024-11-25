@@ -9,12 +9,11 @@ export type User = {
 };
 
 export async function createContext(opts: ContextOptions) {
-  if(opts.req.headers["sec-websocket-key"]){
+  if (opts.req.headers["sec-websocket-key"]) {
     return {
-      req: opts.req,
-      res: opts.res
+      ...opts,
     };
-  }else{
+  } else {
     let user: User | null = null;
     if (opts.req.headers.cookie) {
       const cookies = parse(opts.req.headers.cookie);
@@ -25,10 +24,9 @@ export async function createContext(opts: ContextOptions) {
     return {
       user,
       req: opts.req,
-      res: opts.res
+      res: opts.res,
     };
   }
-
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>;
