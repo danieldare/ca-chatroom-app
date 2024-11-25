@@ -28,7 +28,7 @@ Real-time Communication: WebSocket is used for real-time updates and messaging.
 tRPC Integration: API routes are handled using tRPC.
 Prisma ORM: Database interactions are managed using Prisma.
 
-
+```
 .
 ├── app
 │   ├── (client)
@@ -73,7 +73,7 @@ Prisma ORM: Database interactions are managed using Prisma.
 ├── [.env.example](http://_vscodecontentref_/0)
 ├── [package.json](http://_vscodecontentref_/1)
 └── [README.md](http://_vscodecontentref_/2)
-
+```
 
 ## Technologies Used
 **Next.js**: A React framework for building server-side rendered and statically generated web applications.
