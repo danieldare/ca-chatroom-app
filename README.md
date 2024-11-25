@@ -130,7 +130,7 @@ npm run dev
 ```
 
 ```
-npm run websocket:start
+npm run wss:start
 ```
 or 
 
